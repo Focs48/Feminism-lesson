@@ -985,6 +985,202 @@
       font-weight: 300;
     }
 
+    /* ── POPUP MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(26,10,14,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      animation: fadeIn 0.3s ease;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal-content {
+      background: var(--cream);
+      border-radius: 24px;
+      max-width: 650px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: slideUp 0.4s ease both;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-header {
+      background: linear-gradient(135deg, var(--terracotta), var(--gold));
+      padding: 2rem 2.5rem;
+      border-radius: 24px 24px 0 0;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: rgba(255,255,255,0.3);
+      transform: rotate(90deg);
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    .modal-subtitle {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.08em;
+    }
+    .modal-body {
+      padding: 2rem 2.5rem;
+    }
+    .modal-section {
+      margin-bottom: 1.75rem;
+    }
+    .modal-section:last-child { margin-bottom: 0; }
+    .modal-section h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--deep);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .modal-section p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #5a3a44;
+      font-weight: 300;
+    }
+    .modal-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .modal-section li {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #6b4a52;
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .modal-section li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--terracotta);
+      font-size: 0.7rem;
+    }
+    .wiki-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      background: var(--light-rose);
+      border: 1px solid var(--blush);
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      color: var(--terracotta);
+      font-weight: 500;
+      transition: all 0.2s;
+      margin-top: 1rem;
+      display: inline-flex;
+    }
+    .wiki-link:hover {
+      background: var(--blush);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .wiki-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: rgba(192,97,76,0.15);
+      border-radius: 4px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-left: 0.35rem;
+      text-decoration: none;
+      color: var(--terracotta);
+    }
+    .wiki-icon:hover {
+      background: var(--terracotta);
+      color: white;
+      transform: scale(1.1);
+    }
+    .info-trigger {
+      color: var(--terracotta);
+      cursor: pointer;
+      border-bottom: 1.5px dotted var(--terracotta);
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .info-trigger:hover {
+      border-bottom-style: solid;
+      color: var(--deep);
+    }
+
+    /* ── TOOLTIP ── */
+    .tooltip-term {
+      position: relative;
+      color: var(--terracotta);
+      border-bottom: 1.5px dotted var(--terracotta);
+      cursor: help;
+    }
+    .tooltip-term:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--deep);
+      color: var(--cream);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 100;
+      animation: fadeIn 0.2s ease;
+    }
+    .tooltip-term:hover::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--deep);
+      margin-bottom: -5px;
+    }
+
     /* ── MOBILE HAMBURGER ── */
     .nav-toggle {
       display: none;
@@ -1147,9 +1343,12 @@
     <div class="definition-text">
       <p><strong>Феминизмът</strong> е идеологическо и обществено движение, което се бори за политическо, икономическо, лично и социално равенство между половете.</p>
       <br>
-      <p>Думата идва от <strong>латинското „femina"</strong> (жена) и навлиза в употреба в края на XIX век. Феминизмът не е единна идеология — той обхваща множество течения: либерален, радикален, социалистически, пресечен (intersectional) и много други.</p>
+      <p>Думата идва от <span class="tooltip-term" data-tooltip="Латински: жена">латинското „femina"</span> (жена) и навлиза в употреба в края на XIX век. Феминизмът не е единна идеология — той обхваща множество течения: <span class="tooltip-term" data-tooltip="Фокус върху правни реформи и равни права">либерален</span>, <span class="tooltip-term" data-tooltip="Вижда патриархата като основен проблем">радикален</span>, <span class="tooltip-term" data-tooltip="Свързва феминизма с класова борба">социалистически</span>, <span class="tooltip-term" data-tooltip="Отчита пресичането на пол, раса, класа">пресечен (intersectional)</span> и много други.</p>
       <br>
       <p>В основата на всички феминистки движения стои убеждението, че жените и мъжете трябва да имат <strong>равни права и възможности</strong> — в политиката, икономиката и личния живот.</p>
+      <a href="https://bg.wikipedia.org/wiki/Феминизъм" target="_blank" rel="noopener" class="wiki-link">
+        📖 Виж повече във Wikipedia
+      </a>
     </div>
   </div>
 </section>
@@ -1213,34 +1412,46 @@
 
       <div class="figure-card reveal">
         <div class="figure-avatar">✍</div>
-        <div class="figure-name">Мери Уолстъункрафт</div>
+        <div class="figure-name">
+          Мери Уолстъункрафт
+          <a href="https://bg.wikipedia.org/wiki/Мери_Уолстънкрафт" target="_blank" rel="noopener" class="wiki-icon" title="Wikipedia">W</a>
+        </div>
         <div class="figure-years">1759 – 1797</div>
         <div class="figure-role">Философ · Автор</div>
-        <p class="figure-bio">В „Защита на правата на жената" (1792) тя формулира за пръв път аргумент за равно образование и гражданство — основата на модерния феминизъм.</p>
+        <p class="figure-bio">В „Защита на правата на жената" (1792) тя формулира за пръв път аргумент за равно образование и гражданство — основата на модерния феминизъм. <span class="info-trigger" onclick="openModal('wollstonecraft')">Още →</span></p>
       </div>
 
       <div class="figure-card reveal">
         <div class="figure-avatar">⚖️</div>
-        <div class="figure-name">Сюзан Б. Антъни</div>
+        <div class="figure-name">
+          Сюзан Б. Антъни
+          <a href="https://bg.wikipedia.org/wiki/Сюзан_Антъни" target="_blank" rel="noopener" class="wiki-icon" title="Wikipedia">W</a>
+        </div>
         <div class="figure-years">1820 – 1906</div>
         <div class="figure-role">Активист · Суфражетка</div>
-        <p class="figure-bio">Посветила живота си на правото на глас за жените в САЩ. Арестувана за гласуване на изборите от 1872 г. — смела постъпка за епохата.</p>
+        <p class="figure-bio">Посветила живота си на правото на глас за жените в САЩ. Арестувана за гласуване на изборите от 1872 г. — смела постъпка за епохата. <span class="info-trigger" onclick="openModal('anthony')">Още →</span></p>
       </div>
 
       <div class="figure-card reveal">
         <div class="figure-avatar">📖</div>
-        <div class="figure-name">Симон дьо Бовоар</div>
+        <div class="figure-name">
+          Симон дьо Бовоар
+          <a href="https://bg.wikipedia.org/wiki/Симон_дьо_Бовоар" target="_blank" rel="noopener" class="wiki-icon" title="Wikipedia">W</a>
+        </div>
         <div class="figure-years">1908 – 1986</div>
         <div class="figure-role">Философ · Писателка</div>
-        <p class="figure-bio">„Вторият пол" (1949) анализира как жените са конструирани като „другото" в обществото — ключов текст на феминистката теория.</p>
+        <p class="figure-bio">„Вторият пол" (1949) анализира как жените са конструирани като „другото" в обществото — ключов текст на феминистката теория. <span class="info-trigger" onclick="openModal('beauvoir')">Още →</span></p>
       </div>
 
       <div class="figure-card reveal">
         <div class="figure-avatar">✊</div>
-        <div class="figure-name">Белл Хукс</div>
+        <div class="figure-name">
+          Белл Хукс
+          <a href="https://en.wikipedia.org/wiki/Bell_hooks" target="_blank" rel="noopener" class="wiki-icon" title="Wikipedia">W</a>
+        </div>
         <div class="figure-years">1952 – 2021</div>
         <div class="figure-role">Теоретик · Активист</div>
-        <p class="figure-bio">Свърза феминизма с расизма и класовото неравенство. „Феминизмът е за всички" разшири движението отвъд белата средна класа.</p>
+        <p class="figure-bio">Свърза феминизма с расизма и класовото неравенство. „Феминизмът е за всички" разшири движението отвъд белата средна класа. <span class="info-trigger" onclick="openModal('hooks')">Още →</span></p>
       </div>
 
     </div>
@@ -1554,6 +1765,18 @@
   </div>
 </section>
 
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal-content" id="modalContent">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-subtitle" id="modalSubtitle"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
 <!-- MOBILE QR SECTION (visible only on mobile) -->
 <section class="mobile-qr-section">
   <img src="qr-code.png" alt="QR код за достъп до урока">
@@ -1579,6 +1802,128 @@
 </footer>
 
 <script>
+  // ── MODAL DATA ──
+  const modalData = {
+    wollstonecraft: {
+      title: 'Мери Уолстъункрафт',
+      subtitle: '1759 – 1797 · Британска философка и писателка',
+      content: `
+        <div class="modal-section">
+          <h4>🎓 Образование и контекст</h4>
+          <p>Родена в Лондон в средна класа, Мери израства във време, когато жените нямат достъп до висше образование. Самообразова се чрез четене и дискусии с интелектуалци от епохата.</p>
+        </div>
+        <div class="modal-section">
+          <h4>📖 Основни произведения</h4>
+          <ul>
+            <li><strong>"Защита на правата на жената"</strong> (1792) —革 революционен текст, в който аргументира, че жените не са по природа по-малоумни, а са лишени от образование</li>
+            <li><strong>"Мисли за образованието на дъщерите"</strong> (1787)</li>
+            <li>Романи и пътеписи с феминистка тематика</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h4>💡 Наследство</h4>
+          <p>Въпреки че умира млада на 38 години, нейните идеи стават основа на либералния феминизъм. Дъщеря ѝ Мери Шели става автор на "Франкенщайн".</p>
+        </div>
+        <a href="https://bg.wikipedia.org/wiki/Мери_Уолстънкрафт" target="_blank" rel="noopener" class="wiki-link">📖 Прочети повече в Wikipedia</a>
+      `
+    },
+    anthony: {
+      title: 'Сюзан Б. Антъни',
+      subtitle: '1820 – 1906 · Американска суфражетка и активистка',
+      content: `
+        <div class="modal-section">
+          <h4>✊ Активизъм</h4>
+          <p>Работи заедно с Елизабет Кейди Стентън за премахване на робството и права на жените. През 1872 г. е арестувана и глобена с $100 за гласуване — отказва да плати.</p>
+        </div>
+        <div class="modal-section">
+          <h4>🗳️ Суфражистко движение</h4>
+          <ul>
+            <li>Основава Национална асоциация за избирателни права на жените (1869)</li>
+            <li>Пътува из цялата страна, произнася над 100 речи годишно</li>
+            <li>Умира 14 години преди 19-тата поправка (1920)</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h4>🏆 Признание</h4>
+          <p>През 1979 г. става първата жена на американска монета ($1). Нейното лице символизира борбата за равенство.</p>
+        </div>
+        <a href="https://bg.wikipedia.org/wiki/Сюзан_Антъни" target="_blank" rel="noopener" class="wiki-link">📖 Прочети повече в Wikipedia</a>
+      `
+    },
+    beauvoir: {
+      title: 'Симон дьо Бовоар',
+      subtitle: '1908 – 1986 · Френска философка и писателка',
+      content: `
+        <div class="modal-section">
+          <h4>📚 "Вторият пол" (1949)</h4>
+          <p>Революционна книга, която анализира как обществото конструира жените като "другото". Известната фраза: <em>"Не се раждаш жена — ставаш жена"</em> означава, че женствеността е социален конструкт, не биологична съдба.</p>
+        </div>
+        <div class="modal-section">
+          <h4>🤝 Връзка със Сартр</h4>
+          <p>Партньорство с философа Жан-Пол Сартр — отказват брак и деца, за да запазят интелектуална и лична свобода. Моделът им за връзка влияе на цяло поколение.</p>
+        </div>
+        <div class="modal-section">
+          <h4>💭 Философия</h4>
+          <ul>
+            <li>Екзистенциализъм — жената трябва да се освободи чрез избор и действие</li>
+            <li>Критикува "вечната женственост" като мит, поробващ жените</li>
+            <li>Влияе на втората вълна на феминизма (60-те и 70-те)</li>
+          </ul>
+        </div>
+        <a href="https://bg.wikipedia.org/wiki/Симон_дьо_Бовоар" target="_blank" rel="noopener" class="wiki-link">📖 Прочети повече в Wikipedia</a>
+      `
+    },
+    hooks: {
+      title: 'Белл Хукс',
+      subtitle: '1952 – 2021 · Американска теоретичка и активистка',
+      content: `
+        <div class="modal-section">
+          <h4>🌍 Интерсекционален феминизъм</h4>
+          <p>Белл Хукс (псевдоним на Gloria Jean Watkins) критикува белия средно-класов феминизъм и показва как раса, класа и пол се пресичат. Нейната работа е основополагаща за intersectional феминизма.</p>
+        </div>
+        <div class="modal-section">
+          <h4>📖 Ключови книги</h4>
+          <ul>
+            <li><strong>"Ain't I a Woman?"</strong> (1981) — анализ на расизма във феминизма</li>
+            <li><strong>"Feminism is for Everybody"</strong> (2000) — достъпно въведение в феминизма</li>
+            <li><strong>"The Will to Change: Men, Masculinity, and Love"</strong> — за патриархалното влияние върху мъжете</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h4>💡 Наследство</h4>
+          <p>Белл Хукс пише с малки букви (bell hooks), за да премести фокуса от личността към идеите. Нейната работа продължава да вдъхновява активисти по целия свят.</p>
+        </div>
+        <a href="https://en.wikipedia.org/wiki/Bell_hooks" target="_blank" rel="noopener" class="wiki-link">📖 Read more on Wikipedia (EN)</a>
+      `
+    }
+  };
+
+  // ── MODAL FUNCTIONS ──
+  function openModal(id) {
+    const data = modalData[id];
+    if (!data) return;
+    
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalSubtitle').textContent = data.subtitle;
+    document.getElementById('modalBody').innerHTML = data.content;
+    document.getElementById('modalOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOnOverlay(event) {
+    if (event.target.id === 'modalOverlay') closeModal();
+  }
+
+  // ESC key to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
   // ── NAV TOGGLE ──
   function toggleNav() {
     const toggle = document.getElementById('navToggle');
